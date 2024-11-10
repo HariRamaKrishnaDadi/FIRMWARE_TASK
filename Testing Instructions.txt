@@ -1,0 +1,25 @@
+Testing and Validation
+
+To test this firmware:
+
+--> First we will Set up the serial connection between the MCU and PC.
+--> we can Use the send_data function in PC code to send the data to the MCU.
+--> In this way we can ensure that each byte is received and stored correctly in EEPROM.
+--> MCU will send back the data from EEPROM, and the PC will display the data.
+
+
+
+
+
+If ATmega328P does not have a built-in millis() function, then we can make use of below function
+
+uint32_t millis() {
+    return (TCNT1 * (1024.0 / (F_CPU / 1000)));  
+}
+and include this line 
+TCCR1B |= (1 << CS12) | (1 << CS10);
+in main function 
+
+
+Hopefully this works! if i had hardware then i would have tested myself and took a video recording of it to submit for sure 
+and i hope this code reflects my coding skills!
